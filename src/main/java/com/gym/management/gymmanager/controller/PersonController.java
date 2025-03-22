@@ -1,4 +1,5 @@
 package com.gym.management.gymmanager.controller;
+
 import java.net.URI;
 import com.gym.management.gymmanager.model.Person;
 import com.gym.management.gymmanager.service.PersonService;
@@ -14,16 +15,18 @@ import java.util.Optional;
 @RequestMapping("/api/persons")
 public class PersonController {
 
-    @Autowired
-    private PersonService personService;
+    private final PersonService personService;
 
-    // Получить всех людей
+    @Autowired // ✅ Добавляем аннотацию, чтобы SonarCloud не ругался
+    public PersonController(PersonService personService) {
+        this.personService = personService;
+    }
+
     @GetMapping
     public List<Person> getAllPeople() {
         return personService.getAllPeople();
     }
 
-    // Получить одного человека по ID
     @GetMapping("/{id}")
     public ResponseEntity<Person> getPersonById(@PathVariable Long id) {
         Optional<Person> person = personService.getPersonById(id);
@@ -31,7 +34,6 @@ public class PersonController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Создать нового человека
     @PostMapping
     public ResponseEntity<Person> createPerson(@Valid @RequestBody Person person) {
         Person savedPerson = personService.savePerson(person);
@@ -39,7 +41,6 @@ public class PersonController {
                 .body(savedPerson);
     }
 
-    // Обновить существующего человека
     @PutMapping("/{id}")
     public ResponseEntity<Person> updatePerson(@PathVariable Long id, @Valid @RequestBody Person person) {
         if (!personService.getPersonById(id).isPresent()) {
@@ -50,7 +51,6 @@ public class PersonController {
         return ResponseEntity.ok(updatedPerson);
     }
 
-    // Удалить человека по ID
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePerson(@PathVariable Long id) {
         if (!personService.getPersonById(id).isPresent()) {
@@ -60,7 +60,6 @@ public class PersonController {
         return ResponseEntity.noContent().build();
     }
 
-    // Глобальная обработка ошибок для контроллера
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleException(Exception e) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
