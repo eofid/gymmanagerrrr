@@ -8,7 +8,7 @@ class GymmanagerApplicationTests {
 
 	@Test
 	void contextLoads() {
-		//back is it
+	doSomething();
 	}
 
 }
