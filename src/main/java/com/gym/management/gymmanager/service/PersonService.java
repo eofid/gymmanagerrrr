@@ -12,7 +12,8 @@ public class PersonService {
 
     private final PersonRepository personRepository;
 
-    public PersonService(PersonRepository personRepository) { // ✅ Внедрение через конструктор
+    @Autowired
+    public PersonService(PersonRepository personRepository) { 
         this.personRepository = personRepository;
     }
 
