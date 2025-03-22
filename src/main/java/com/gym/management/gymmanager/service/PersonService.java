@@ -2,7 +2,6 @@ package com.gym.management.gymmanager.service;
 
 import com.gym.management.gymmanager.model.Person;
 import com.gym.management.gymmanager.repository.PersonRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,8 +10,11 @@ import java.util.Optional;
 @Service
 public class PersonService {
 
-    @Autowired
-    private PersonRepository personRepository;
+    private final PersonRepository personRepository;
+
+    public PersonService(PersonRepository personRepository) { // ✅ Внедрение через конструктор
+        this.personRepository = personRepository;
+    }
 
     // Получить все записи
     public List<Person> getAllPeople() {
@@ -24,7 +26,7 @@ public class PersonService {
         return personRepository.findById(id);
     }
 
-    // Сохранить новый или обновить существующий
+    // Сохранить нового или обновить существующего
     public Person savePerson(Person person) {
         return personRepository.save(person);
     }
