@@ -17,7 +17,7 @@ public class PersonController {
 
     private final PersonService personService;
 
-    @Autowired // ✅ Добавляем аннотацию, чтобы SonarCloud не ругался
+    @Autowired 
     public PersonController(PersonService personService) {
         this.personService = personService;
     }
