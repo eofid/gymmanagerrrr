@@ -1,29 +1,31 @@
 package com.gym.management.gymmanager.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 
 @Entity
 public class Person {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-    private String email;
+    private String phoneNumber;
 
-    // Конструкторы
+    // Связь с тренером (trainer)
+    @ManyToOne
+    @JoinColumn(name = "trainer_id")
+    @JsonBackReference
+    private Trainer trainer;
+
+    // Связь с залом (gym)
+    @ManyToOne
+    @JoinColumn(name = "gym_id")
+    private Gym gym;
+
+    // Constructors, Getters, Setters
     public Person() {}
 
-    public Person(String name, String email) {
-        this.name = name;
-        this.email = email;
-    }
-
-    // Геттеры и сеттеры
     public Long getId() {
         return id;
     }
@@ -40,11 +42,27 @@ public class Person {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Trainer getTrainer() {
+        return trainer;
+    }
+
+    public void setTrainer(Trainer trainer) {
+        this.trainer = trainer;
+    }
+
+    public Gym getGym() {
+        return gym;
+    }
+
+    public void setGym(Gym gym) {
+        this.gym = gym;
     }
 }
