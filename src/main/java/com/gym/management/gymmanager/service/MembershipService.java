@@ -8,9 +8,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class MembershipService {
 
-    @Autowired
-    private MembershipRepository membershipRepository;
+    private final MembershipRepository membershipRepository;
 
+    // Конструктор с внедрением зависимости
+    public MembershipService(MembershipRepository membershipRepository) {
+        this.membershipRepository = membershipRepository;
+    }
     public Membership saveMembership(Membership membership) {
         return membershipRepository.save(membership);
     }
