@@ -12,9 +12,9 @@ import java.util.List;
 @RequestMapping("/api/gyms")
 public class GymController {
 
-    @Autowired
-    private GymService gymService;
-
+    public GymController(GymService gymService) {
+        this.gymService = gymService;
+    }
     // ✅ 1. Добавить новый зал
     @PostMapping
     public ResponseEntity<Gym> addGym(@RequestBody Gym gym) {
