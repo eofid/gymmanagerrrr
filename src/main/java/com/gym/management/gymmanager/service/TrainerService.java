@@ -7,11 +7,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TrainerService {
+public class MembershipService {
 
-    @Autowired
-    private TrainerRepository trainerRepository;
+    private final MembershipRepository membershipRepository;
 
+    // Конструктор с внедрением зависимости
+    public MembershipService(MembershipRepository membershipRepository) {
+        this.membershipRepository = membershipRepository;
+    }
     // Сохранение нового тренера
     public Trainer saveTrainer(Trainer trainer) {
         return trainerRepository.save(trainer);
