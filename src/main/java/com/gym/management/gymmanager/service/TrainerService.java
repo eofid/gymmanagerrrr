@@ -12,12 +12,9 @@ public class TrainerService {
     private final TrainerRepository trainerRepository;
 
     // Внедрение зависимости через конструктор
+    @Autowired
     public TrainerService(TrainerRepository trainerRepository) {
         this.trainerRepository = trainerRepository;
-    }
-    // Конструктор с внедрением зависимости
-    public MembershipService(MembershipRepository membershipRepository) {
-        this.membershipRepository = membershipRepository;
     }
     // Сохранение нового тренера
     public Trainer saveTrainer(Trainer trainer) {
