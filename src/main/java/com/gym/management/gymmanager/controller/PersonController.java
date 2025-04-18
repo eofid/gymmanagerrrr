@@ -3,7 +3,6 @@ package com.gym.management.gymmanager.controller;
 import com.gym.management.gymmanager.cache.PersonCache;
 import com.gym.management.gymmanager.model.Person;
 import com.gym.management.gymmanager.service.PersonService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
