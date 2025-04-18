@@ -23,8 +23,9 @@ public class Person {
     @JoinColumn(name = "gym_id")
     private Gym gym;
 
-    // Constructors, Getters, Setters
-    public Person() {}
+    public Person() {
+        // Этот конструктор необходим JPA для создания экземпляров через рефлексию
+    }
 
     public Long getId() {
         return id;
