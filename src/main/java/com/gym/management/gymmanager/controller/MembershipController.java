@@ -52,7 +52,7 @@ public class MembershipController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteMembership(@PathVariable Long id) {
+    public ResponseEntity<Membership> deleteMembership(@PathVariable Long id) {
         boolean deleted = membershipService.deleteMembership(id);
         return deleted ? ResponseEntity.ok("Абонемент удалён")
                 : ResponseEntity.status(HttpStatus.NOT_FOUND).body("Абонемент не найден");
