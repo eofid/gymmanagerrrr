@@ -11,8 +11,12 @@ import java.util.Optional;
 @Service
 public class GymService {
 
-    @Autowired
-    private GymRepository gymRepository;
+    private final GymRepository gymRepository;
+
+    // ✅ Конструкторная инъекция
+    public GymService(GymRepository gymRepository) {
+        this.gymRepository = gymRepository;
+    }
 
     // ✅ Сохранение зала
     public Gym saveGym(Gym gym) {
