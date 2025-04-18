@@ -7,10 +7,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class MembershipService {
+public class TrainerService {
 
-    private final MembershipRepository membershipRepository;
+    private final TrainerRepository trainerRepository;
 
+    // Внедрение зависимости через конструктор
+    public TrainerService(TrainerRepository trainerRepository) {
+        this.trainerRepository = trainerRepository;
+    }
     // Конструктор с внедрением зависимости
     public MembershipService(MembershipRepository membershipRepository) {
         this.membershipRepository = membershipRepository;
