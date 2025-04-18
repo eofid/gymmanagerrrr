@@ -14,11 +14,13 @@ import java.util.Map;
 @RequestMapping("/api/persons")
 public class PersonController {
 
-    @Autowired
-    private PersonService personService;
+    private final PersonService personService;
+    private final PersonCache personCache;
 
-    @Autowired
-    private PersonCache personCache;
+    public PersonController(PersonService personService, PersonCache personCache) {
+        this.personService = personService;
+        this.personCache = personCache;
+    }
 
     // ✅ Добавление нового человека
     @PostMapping
