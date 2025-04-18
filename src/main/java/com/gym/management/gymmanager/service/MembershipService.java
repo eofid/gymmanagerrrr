@@ -2,7 +2,6 @@ package com.gym.management.gymmanager.service;
 
 import com.gym.management.gymmanager.model.Membership;
 import com.gym.management.gymmanager.repository.MembershipRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
