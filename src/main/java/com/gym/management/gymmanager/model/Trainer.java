@@ -20,8 +20,9 @@ public class Trainer {
     @JsonManagedReference
     private List<Person> persons = new ArrayList<>();
 
-    // Constructors, Getters, Setters
-    public Trainer() {}
+    public Trainer() {
+        // Этот конструктор необходим JPA для создания экземпляров через рефлексию
+    }
 
     public Long getId() {
         return id;
