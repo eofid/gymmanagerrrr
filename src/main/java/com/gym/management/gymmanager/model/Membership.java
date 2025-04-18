@@ -19,9 +19,9 @@ public class Membership {
     @JoinColumn(name = "person_id")
     private Person person;
 
-    // Constructors, Getters, Setters
-    public Membership() {}
-
+    public Membership() {
+        // Этот конструктор необходим JPA для создания экземпляров через рефлексию
+    }
     public Long getId() {
         return id;
     }
