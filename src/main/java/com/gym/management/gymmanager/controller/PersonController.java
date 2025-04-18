@@ -1,6 +1,5 @@
 package com.gym.management.gymmanager.controller;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import com.gym.management.gymmanager.cache.PersonCache;
 import com.gym.management.gymmanager.model.Person;
 import com.gym.management.gymmanager.service.PersonService;
