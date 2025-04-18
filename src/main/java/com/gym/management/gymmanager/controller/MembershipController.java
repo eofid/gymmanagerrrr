@@ -30,7 +30,7 @@ public class MembershipController {
 
     @PostMapping("/person/{personId}")
     @Transactional
-    public ResponseEntity<?> assignMembershipToPerson(@PathVariable Long personId,
+    public ResponseEntity<Membership> assignMembershipToPerson(@PathVariable Long personId,
                                                       @RequestBody Membership membership) {
         Person person = personService.getPersonById(personId);
         if (person == null) {
@@ -45,7 +45,7 @@ public class MembershipController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getMembershipById(@PathVariable Long id) {
+    public ResponseEntity<Membership> getMembershipById(@PathVariable Long id) {
         Membership membership = membershipService.getMembershipById(id);
         return membership != null ? ResponseEntity.ok(membership)
                 : ResponseEntity.status(HttpStatus.NOT_FOUND).body("Абонемент не найден");
