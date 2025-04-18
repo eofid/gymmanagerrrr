@@ -13,9 +13,11 @@ import java.util.List;
 @RequestMapping("/api/trainers")
 public class TrainerController {
 
-    @Autowired
-    private TrainerService trainerService;
+    private final TrainerService trainerService;
 
+    public TrainerController(TrainerService trainerService) {
+        this.trainerService = trainerService;
+    }
     // Создание нового тренера
     @PostMapping
     public ResponseEntity<Trainer> addTrainer(@RequestBody Trainer trainer) {
