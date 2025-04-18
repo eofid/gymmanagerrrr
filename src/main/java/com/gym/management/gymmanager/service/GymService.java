@@ -2,7 +2,6 @@ package com.gym.management.gymmanager.service;
 
 import com.gym.management.gymmanager.model.Gym;
 import com.gym.management.gymmanager.repository.GymRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
