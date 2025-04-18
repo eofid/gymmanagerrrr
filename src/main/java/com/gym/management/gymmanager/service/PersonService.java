@@ -16,18 +16,21 @@ import java.util.Optional;
 @Service
 public class PersonService {
 
-    @Autowired
-    private PersonRepository personRepository;
+    private final PersonRepository personRepository;
+    private final GymService gymService;
+    private final TrainerService trainerService;
+    private final PersonCache personCache;
 
     @Autowired
-    private PersonCache personCache;
-
-    @Autowired
-    private TrainerRepository trainerRepository; // Добавлен репозиторий для тренеров
-
-    @Autowired
-    private GymRepository gymRepository; // Добавлен репозиторий для залов
-
+    public PersonService(PersonRepository personRepository,
+                         GymService gymService,
+                         TrainerService trainerService,
+                         PersonCache personCache) {
+        this.personRepository = personRepository;
+        this.gymService = gymService;
+        this.trainerService = trainerService;
+        this.personCache = personCache;
+    }
     // Сохранение нового человека с кэшированием
     public Person savePerson(Person person) {
         Person saved = personRepository.save(person);
